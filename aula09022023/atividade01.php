@@ -6,7 +6,7 @@ function getDados() {
     /** @var PDO $pdo */
     $pdo = getConexao();
 
-    $query = "SELECT * FROM `contato`";
+    $query = "SELECT * FROM `cliente`";
 
     $stmt = $pdo->prepare($query);
 
@@ -28,26 +28,22 @@ function getColunasTabela(){
     $aDados = getDados();
 	
     if(count($aDados)){
-        foreach ($aDados as $aContato){
+        foreach ($aDados as $aCliente){
             // inicia linha
             $html_colunas_tabela .= "<tr>";
 
-            $contato_id = $aContato["contato_id"];
-            $nome       = $aContato["nome"];
-            $sobrenome  = $aContato["sobrenome"];
-            $endereco   = $aContato["endereco"];
-            $telefone   = $aContato["telefone"];
-            $email      = $aContato["email"];
-            $nascimento = $aContato["nascimento"];
+            $cliente_id = $aCliente["cliente_id"];
+            $nome       = $aCliente["nome"];
+            $telefone   = $aCliente["telefone"];
+            $email      = $aCliente["email"];
+            $cidade     = $aCliente["cidade"];
 
             // Colunas
-            $html_colunas_tabela .= "<td>$contato_id</td>";
+            $html_colunas_tabela .= "<td>$cliente_id</td>";
             $html_colunas_tabela .= "<td>$nome</td>";
-            $html_colunas_tabela .= "<td>$sobrenome</td>";
-            $html_colunas_tabela .= "<td>$endereco</td>";
             $html_colunas_tabela .= "<td>$telefone</td>";
             $html_colunas_tabela .= "<td>$email</td>";
-            $html_colunas_tabela .= "<td>$nascimento</td>";
+            $html_colunas_tabela .= "<td>$cidade</td>";
 
             // finaliza linha
             $html_colunas_tabela .= "</tr>";
@@ -60,11 +56,11 @@ function getColunasTabela(){
 	return $html_colunas_tabela;
 }
 
-function carregaContatos(){
+function carregaClientes(){
 // Lista de Contatos em HTML com os dados do banco de dados(tabela html)
     $html_tabela = "<table border='1'>";
 
-    $html_tabela .= "<caption><h1>Contatos</h1></caption>";
+    $html_tabela .= "<caption><h1>Clientes</h1></caption>";
 
     $html_tabela .= "<thead>";
 // iniciando linha
@@ -72,11 +68,9 @@ function carregaContatos(){
 // colunas cabecalho
     $html_tabela .= "    <th>Id</th>";
     $html_tabela .= "    <th>Nome</th>";
-    $html_tabela .= "    <th>Sobrenome</th>";
-    $html_tabela .= "    <th>Endereco</th>";
     $html_tabela .= "    <th>Telefone</th>";
     $html_tabela .= "    <th>E-mail</th>";
-    $html_tabela .= "    <th>Nascimento</th>";
+    $html_tabela .= "    <th>Cidade</th>";
 // fechando linha
     $html_tabela .= "    </tr>";
     $html_tabela .= "</thead>";
@@ -94,4 +88,4 @@ function carregaContatos(){
     echo $html_tabela;
 }
 
-carregaContatos();
+carregaClientes();
