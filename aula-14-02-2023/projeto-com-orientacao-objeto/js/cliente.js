@@ -72,7 +72,6 @@ const createRow = (cliente, index) => {
     document.querySelector('#tableDados>tbody').appendChild(newRow);
 };
 
-
 function editarCliente(cliente_id){
     console.log('cliente id:' + cliente_id);
 
@@ -141,6 +140,7 @@ const updateDados = () => {
         } else {
             const cliente = {
                 cliente_id:document.getElementById('cliente_id').value,
+
                 nome: document.getElementById('nome').value,
                 telefone: document.getElementById('telefone').value,
                 email: document.getElementById('email').value,
@@ -158,30 +158,7 @@ const isValidFields = () => {
     return document.getElementById('form').reportValidity()
 };
 
-
-function incluirCliente(){
+function incluirDados(){
     document.getElementById('cliente_id').value = "";
     openModal();
 }
-// <SPAN onclick="testarDados()">TESTAR DADOS</SPAN>
-
-
-document.getElementById('salvar')
-    .addEventListener('click', updateDados);
-
-document.getElementById('cancelar')
-    .addEventListener('click', closeModal);
-
-document.getElementById('modalClose')
-    .addEventListener('click', closeModal);
-   
- document.getElementById('cadastrarCliente')
-    .addEventListener('click', incluirCliente);
-
-document.getElementById('consultarDadosCliente')
-    .addEventListener('click', loadAjaxConsulta);
-
-document.getElementById('limparDadosCliente')
-    .addEventListener('click', clearTable);
-
-

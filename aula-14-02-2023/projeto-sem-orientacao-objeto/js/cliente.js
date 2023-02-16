@@ -141,6 +141,7 @@ const updateDados = () => {
         } else {
             const cliente = {
                 cliente_id:document.getElementById('cliente_id').value,
+
                 nome: document.getElementById('nome').value,
                 telefone: document.getElementById('telefone').value,
                 email: document.getElementById('email').value,
@@ -158,13 +159,10 @@ const isValidFields = () => {
     return document.getElementById('form').reportValidity()
 };
 
-
 function incluirCliente(){
     document.getElementById('cliente_id').value = "";
     openModal();
 }
-// <SPAN onclick="testarDados()">TESTAR DADOS</SPAN>
-
 
 document.getElementById('salvar')
     .addEventListener('click', updateDados);
@@ -174,8 +172,9 @@ document.getElementById('cancelar')
 
 document.getElementById('modalClose')
     .addEventListener('click', closeModal);
-   
- document.getElementById('cadastrarCliente')
+
+// Acoes de inclusao
+document.getElementById('cadastrarCliente')
     .addEventListener('click', incluirCliente);
 
 document.getElementById('consultarDadosCliente')
@@ -183,5 +182,3 @@ document.getElementById('consultarDadosCliente')
 
 document.getElementById('limparDadosCliente')
     .addEventListener('click', clearTable);
-
-

@@ -155,6 +155,7 @@ function carregaCabecalho() {
 //    document.getElementById('telefone').value     = oCliente.telefone;
 //    document.getElementById('email').value        = oCliente.email;
 //    document.getElementById('cidade').value       = oCliente.cidade;
+
 function getAcoesInclusao(){
     return '<section class="acoes">
                 <button type="button" class="button blue mobile" id="cadastrarCliente">Incluir</button>
@@ -189,10 +190,9 @@ function getModalClientes(){
 function carregaClientes(){
     $html_tabela = carregaCabecalho();
 
-    $html_tabela .= '<a href="executa_insert_clientes.php">Inserir Clientes</a>';
-    
+    $html_tabela .= '<a href="executa_insert_clientes.php" >Inserir Varios Clientes</a>';
+
     $html_tabela .= "<hr>";
-    
     $html_tabela .= getAcoesInclusao();
 
     // Lista de Contatos em HTML com os dados do banco de dados(tabela html)

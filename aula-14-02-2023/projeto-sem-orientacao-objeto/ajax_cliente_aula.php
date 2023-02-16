@@ -66,6 +66,10 @@ function buscaDadosAlteracao(){
 function executaAlteracao(){
     $registro = json_decode($_POST["cliente"], true);
 
+    echo json_encode($registro);
+    //return;
+
+
     /** @var PDO $pdo */
     $pdo = getConexao();
     
@@ -73,7 +77,7 @@ function executaAlteracao(){
                      `nome`               = :nome, 
                      `telefone`           = :telefone,
                      `email`              = :email,
-                     `cidade`             = :cidade, 
+                     `cidade`             = :cidade
                WHERE `cliente_id`         = :cliente_id";
 
     $stmt = $pdo->prepare($query);

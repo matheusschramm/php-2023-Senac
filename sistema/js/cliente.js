@@ -1,8 +1,8 @@
 function excluirCliente(cliente_id){
     console.log('cliente id:' + cliente_id);
-    
+
 	alert("Excluindo registro...");
-	
+
     const cliente = {
         cliente_id: cliente_id
     };
@@ -29,16 +29,24 @@ function loadAjaxUpdateRegistro (oDados, acao){
 }
 
 function loadAjaxConsulta(){
-    var oDados = {"acao":"EXECUTA_CONSULTA"};
+    var oDados = {
+            "acao"    : "EXECUTA_CONSULTA",
+            "campo"   : document.querySelector("#campo").value,
+            "operador": document.querySelector("#operador").value,
+            "valor"   : document.querySelector("#valor").value
+        };
+
     $.ajax({
         url:"ajax_cliente_aula.php",
         type:"POST",
         async:true,
         data: oDados,
         success:function(response){
+
+            console.log("Retorno Consulta(AJAX):" + JSON.stringify(response));
+
             const aDados = JSON.parse(response);
 
-            console.log("Retorno Consulta(AJAX):" + JSON.stringify(aDados));
 
             clearTable();
 
@@ -71,7 +79,6 @@ const createRow = (cliente, index) => {
 
     document.querySelector('#tableDados>tbody').appendChild(newRow);
 };
-
 
 function editarCliente(cliente_id){
     console.log('cliente id:' + cliente_id);
@@ -141,6 +148,7 @@ const updateDados = () => {
         } else {
             const cliente = {
                 cliente_id:document.getElementById('cliente_id').value,
+
                 nome: document.getElementById('nome').value,
                 telefone: document.getElementById('telefone').value,
                 email: document.getElementById('email').value,
@@ -158,30 +166,9 @@ const isValidFields = () => {
     return document.getElementById('form').reportValidity()
 };
 
-
-function incluirCliente(){
+function incluirDados(){
     document.getElementById('cliente_id').value = "";
     openModal();
 }
-// <SPAN onclick="testarDados()">TESTAR DADOS</SPAN>
-
-
-document.getElementById('salvar')
-    .addEventListener('click', updateDados);
-
-document.getElementById('cancelar')
-    .addEventListener('click', closeModal);
-
-document.getElementById('modalClose')
-    .addEventListener('click', closeModal);
-   
- document.getElementById('cadastrarCliente')
-    .addEventListener('click', incluirCliente);
-
-document.getElementById('consultarDadosCliente')
-    .addEventListener('click', loadAjaxConsulta);
-
-document.getElementById('limparDadosCliente')
-    .addEventListener('click', clearTable);
 
 
