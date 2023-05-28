@@ -1,32 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
-@matheusschramm
-Gelvazio /
-sqlite-php-pdo-completo
-Public
-
-Fork your own copy of Gelvazio/sqlite-php-pdo-completo
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-
-    Insights
-
-sqlite-php-pdo-completo/Home.php /
-gelvazio ok
-Latest commit 16f2069 Feb 16, 2023
-History
-1 contributor
-57 lines (44 sloc) 1.42 KB
 <?php
 
 require_once ("ConsultaPadrao.php");
